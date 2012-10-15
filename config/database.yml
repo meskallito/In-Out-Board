@@ -1,0 +1,26 @@
+defaults: &defaults
+  adapter:  mysql2
+  encoding: utf8
+  socket:   /tmp/mysql.sock
+
+login: &login
+  username: '<%= `whoami`.strip %>'
+  password: ''
+
+development:
+  <<: *defaults
+  <<: *login
+  database: clio_development
+
+production:
+  <<: *defaults
+  <<: *login
+  database: clio_development
+
+test: &test
+  <<: *defaults
+  <<: *login
+  database: clio_test
+
+cucumber:
+  <<: *test

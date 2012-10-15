@@ -1,0 +1,16 @@
+= subscribe_to "/users/update"
+
+- content_for :sidebar do
+  = render partial: 'users/status_form'
+
+- if flash[:notice]
+  .alert.alert-info= flash[:notice]
+%table.table#users-list
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Status
+  %tbody
+    - @users.each do |user|
+      = render(user)

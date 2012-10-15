@@ -1,0 +1,21 @@
+= form_tag sessions_path, class: 'form-horizontal' do
+  %legend Log In
+  - if flash[:alert]
+    .alert.alert-error
+      = flash[:alert]
+  .control-group
+    = label_tag :email, nil, class:' control-label'
+    .controls
+      = text_field_tag :email, params[:email], placeholder: "john@example.com"
+  .control-group
+    = label_tag :password, nil, class:' control-label'
+    .controls
+      = password_field_tag :password, nil
+      %br/
+      %br/
+      .actions= submit_tag "Log In", class: 'btn'
+      %br/
+      %p
+        %a{ href: signup_path }
+          Sign Up
+        if you don't have an account

@@ -1,0 +1,31 @@
+= form_for @user, html: { class: 'form-horizontal' } do |f|
+  %legend New user
+  - if @user.errors.any?
+    .alert.alert-error
+      %h2 Correct your data
+      %ul
+        - @user.errors.full_messages.each do |message|
+          %li= message
+  .control-group
+    = f.label :email, class:' control-label'
+    .controls
+      = f.text_field :email
+  .control-group
+    = f.label :first_name, class:' control-label'
+    .controls
+      = f.text_field :first_name
+  .control-group
+    = f.label :last_name, class:' control-label'
+    .controls
+      = f.text_field :last_name
+  .control-group
+    = f.label :password, class:' control-label'
+    .controls
+      = f.password_field :password
+  .control-group
+    = f.label :password_confirmation, class:' control-label'
+    .controls
+      = f.password_field :password_confirmation
+      %br/
+      %br/
+      .actions= f.submit "Sign Up", class: 'btn'

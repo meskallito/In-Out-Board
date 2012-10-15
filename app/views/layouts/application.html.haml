@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title Clio
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = yield :head
+    = csrf_meta_tags
+  %body
+    .container-fluid
+      .row-fluid
+        .span2.offset2#sidebar
+          - if current_user
+            #{current_user.email}
+            %br/
+            \#{link_to "Log Out", logout_path}
+          = yield :sidebar
+        .span8
+          %h1 In/Out Board
+          = yield

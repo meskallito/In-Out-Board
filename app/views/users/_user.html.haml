@@ -1,0 +1,5 @@
+%tr{ class: status_row_class(user.status), data: { 'user-id' => user.id }  }
+  %td= user.full_name
+  %td= user.email
+  %td
+    = user.status_hash[user.status]

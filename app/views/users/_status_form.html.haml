@@ -1,0 +1,12 @@
+= form_for current_user, remote: true, html: { class: 'form-horizontal user-status-form' } do |f|
+  %br/
+  %h4 Choose your status
+  %br/
+  - f.object.status_hash.each do |k,v|
+    .control-group
+      = f.radio_button :status, k, checked: f.object.status == k
+      = label "user_status_", k do
+        %span{ class: "label label-#{status_row_class(k)}" }
+          = v
+  %br/
+  .actions= f.submit "Save status", class: 'btn' , data: { 'auto-commit' => true }
